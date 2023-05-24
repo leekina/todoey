@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:todoey/components/tasks_list.dart';
+import 'package:todoey/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,15 +47,16 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20)),
-                ),
-                width: MediaQuery.of(context).size.width,
-                child: TasksList()),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20)),
+              ),
+              width: MediaQuery.of(context).size.width,
+              child: TasksList(),
+            ),
           ),
         ],
       ),
@@ -66,42 +68,11 @@ class TasksScreen extends StatelessWidget {
           color: Colors.white,
           size: 40,
         ),
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+              context: context, builder: (context) => AddTaskScreen());
+        },
       ),
-    );
-  }
-}
-
-class TasksList extends StatelessWidget {
-  const TasksList({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        TaskTile(),
-        TaskTile(),
-        TaskTile(),
-      ],
-    );
-  }
-}
-
-class TaskTile extends StatelessWidget {
-  const TaskTile({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return CheckboxListTile(
-      value: false,
-      onChanged: (value) {
-        value = value;
-      },
-      title: Text('this is task'),
     );
   }
 }

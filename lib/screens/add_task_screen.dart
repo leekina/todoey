@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todoey/models/task.dart';
+import 'package:todoey/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({
@@ -67,7 +67,7 @@ class AddTaskScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Provider.of<TaskList>(context, listen: false)
+                Provider.of<TaskData>(context, listen: false)
                     .addTask(taskTitle);
 
                 Navigator.pop(context);
